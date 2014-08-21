@@ -55,10 +55,14 @@ remote.next = function(){
 
 
 $(function(){
-
 	remote.init();
-	$('#next').click(function(){
+	var tab = document.getElementById('tablet');
+	var tablet = new Hammer(tab);
+	tablet.on("swipeleft",function(ev){
 		return remote.next();
 	});
 
+	$('#next').click(function(){
+		return remote.next();
+	});
 });
