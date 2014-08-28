@@ -7,7 +7,7 @@ var express = require('express')
   , omx = require('omxcontrol')
   , pirateBay = require('thepiratebay');
 
-app.listen(process.env.TEST_PORT || 80);
+server.listen(process.env.TEST_PORT || 80);
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(express.static(path.join(__dirname + '/views')));
 

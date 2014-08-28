@@ -1,11 +1,9 @@
-
 remote.currentSection = 0;
 remote.totalSections  = function(){
 	return remote.sections.length;
 }
 
 remote.sections = [
-
 	{
 		id_section : 0
 	},
@@ -13,7 +11,6 @@ remote.sections = [
 	{
 		id_section : 1
 	}
-
 ];
 
 remote.loadSection = function(){
@@ -47,7 +44,7 @@ remote.next = function(){
 	section = remote.getSection(remote.currentSection);
 	return $(section).animate({
 		left: 0-pageWidth
-	}, 300,  function(){
+	}, 300,function(){
 		$(this).hide();
 		return slideInNext();
 	});
