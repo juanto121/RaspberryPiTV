@@ -50,16 +50,16 @@ remote.next = function(){
 	});
 }
 
-
-$(function(){
+$(function(){	
 	remote.init();
 	var tab = document.getElementById('tablet');
 	var tablet = new Hammer(tab);
-	tablet.on("swipeleft",function(ev){
-		return remote.next();
+	var socket = io('/torrent');
+	socket.emit('torrent_query',{title:'game of thrones'});
+	socket.on('torrent_result', function(torrent_response){
+		var found_content = torrent_response;
 	});
-
-	$('#next').click(function(){
+	tablet.on("swipeleft",function(ev){
 		return remote.next();
 	});
 });
