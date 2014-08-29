@@ -54,12 +54,19 @@ $(function(){
 	remote.init();
 	var tab = document.getElementById('tablet');
 	var tablet = new Hammer(tab);
-	var socket = io('/torrent');
+/*	var socket = io('/torrent');
 	socket.emit('torrent_query',{title:'game of thrones'});
 	socket.on('torrent_result', function(torrent_response){
 		var found_content = torrent_response;
+	});
+*/
+	socket = io('/youtube');
+	socket.emit('youtube_query',{title:'gatos'});
+	socket.on('youtube_result',function(youtube_response){
+		var found_content = youtube_response;
 	});
 	tablet.on("swipeleft",function(ev){
 		return remote.next();
 	});
 });
+
