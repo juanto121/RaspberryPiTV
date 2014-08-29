@@ -1,3 +1,4 @@
+//Server
 var express = require('express')
   , app = express()  
   , server = require('http').createServer(app)
@@ -23,6 +24,10 @@ app.get('/remote', function (req, res) {
 
 var torrent_socket = io.of('/torrent').on('connection', function(socket){
 	torrent_control.respond(torrent_socket, socket);
+});
+
+var youtube_socket = io.of('/youtube').on('connection'), function(socket){
+  youtube_control.respond(youtube_socket,socket);
 });
 
 

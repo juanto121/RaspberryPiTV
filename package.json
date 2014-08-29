@@ -9,6 +9,7 @@
     "express": "3.x",
     "socket.io":"1.0",
     "omxcontrol":"0.0.1",
-    "thepiratebay":"0.1.0"
+    "thepiratebay":"0.1.0",
+    "youtube-api": "0.3.0"
   }
 }
