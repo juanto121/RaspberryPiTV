@@ -7,30 +7,48 @@
 	<body>
 		<div id="tablet">
 			<div class ="section section_0" data-section="0">
-				<h1>Youtube page</h1>
+				<h1 class="section-title">Youtube page</h1>
 			</div>
 			<div class ="section section_1" data-section="1">
-				<h1>Torrent page</h1>
-				<div class="search_bar">
-					<p>Search bar</p>
+				<div class="section-icon" >
+					<img src="/images/pirateBay_80.png">
+				</div>
+				<div class="section-title">
+					<h1>Torrent Media</h1>
+				</div>
+
+				<div class="search-bar">
+				   <input type="text" placeholder="pirate-bay search" >
 				</div>
 				
 				<div class="content_preview_holder">
-					<p>Img Content</p>
+					<ul class=""></ul>
 				</div>
 
 				<div class="content_text_holder">
-					<p>Text Content</p>
+					<ul class="torrent-info">
+
+					</ul>
 				</div>
 
 			</div>
 			
 		</div>
 	</body>
-
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/remote_custom.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"> </script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="js/libs/hammer.js"></script>
 	<script src="js/remote.js"></script>
+	<script id="torrentTpl" type="text/template">
+		<li class="block">
+			<div class="tile">	
+				<h3 class="tile-title">{{name}}</h3>
+				<p>link: {{link}}</p>
+				<p>Size: {{size}}</p>
+			</div>
+		</li>
+	</script>
 </html>

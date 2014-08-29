@@ -55,9 +55,30 @@ $(function(){
 	var tab = document.getElementById('tablet');
 	var tablet = new Hammer(tab);
 	var socket = io('/torrent');
-	socket.emit('torrent_query',{title:'game of thrones'});
+	$(".search-bar input").change(function() {
+		socket.emit('torrent_query',{title:$(this).val()});
+ 	});
 	socket.on('torrent_result', function(torrent_response){
 		var found_content = torrent_response;
+		var index;
+		var content_length = found_content.length;
+		for(index = 0; index < content_length; ++index){
+			torrent_entry = found_content[index];
+			var name = torrent_entry.name,
+				link = torrent_entry.link,
+				size = torrent_entry.size;
+
+			torrent_info = {
+				name : name,
+				link : link,
+				size : size,
+			};
+
+			var template = $('#torrentTpl').html(),
+				html = Mustache.to_html(template, torrent_info);
+
+			$('ul.torrent-info').append(html);
+		}
 	});
 	tablet.on("swipeleft",function(ev){
 		return remote.next();

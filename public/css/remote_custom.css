@@ -6,16 +6,39 @@ html ,body{
 
 body{
 	overflow:hidden;
+	font-family: 'Roboto', sans-serif;
 }
 
 .section{
 	width: 850px;
 	height: 450px;
-	margin: 0 auto;
+	margin: 20px 0px 0px 50px; 
 	position: relative;
 	display: none;
 }
-.section h1{
-	width: 700px;
-	position:absolute;
+
+.section-title h1{
+	
+}
+
+.section-icon img{
+	margin: 0px 10px 10px 0px;
+	float: left;
+}
+
+.search-bar input{
+	border-width: 1px;
+	border-radius: 5px;
+	border-style: solid;
+	font-size: 20px;
+	width: 200px;
+	height:  50px;
+	margin: 0px 10px 10px 0px;
+}
+
+.content_preview_holder{
+	margin:10px;
+}
+.content_text_holder{
+	margin:10px;
 }

@@ -2,7 +2,8 @@ pirateBay = require('thepiratebay');
 
 exports.respond = function(torrent,socket_io){
 	socket_io.on('torrent_query',function(torrent_query){
-			var resultado = youtube.getVideo(torrent_query.title);
-			socket_io.emit('youtube_result',response);
+			pirateBay.search(torrent_query.title,{page:'1'},function(error,response){
+				socket_io.emit('torrent_result',response);
+			});	
 	});
 }
