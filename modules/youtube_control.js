@@ -21,15 +21,18 @@ exports.respond = function(youtube,socket_io){
 console.log('out youtube-search');
 	socket_io.on('youtube_query',function(yt_query){
     youtube_query = yt_query.title;
-    console.log('in youtube-search');
-      youtubeAPI.authenticate({
+    console.log('in youtube-search:'+ youtube_query);
+
+
+
+      var auto=youtubeAPI.authenticate({
           type: "key"
-        , token: "AIzaSyDQUl2EphYfbq7kJxTMYjF_cnIIYFLZzS4"
+        , key:"AIzaSyAhCfiK8MXp5fshlJm72o_regYp6uwrVq0"
       });
+      console.log(auto);
 			var resultado = youtubeAPI.search.list({
-        "part": "snippet"
-        ,"maxResults":12
-        ,"q": youtube_query
+        q: youtube_query,
+        part: 'snippet'
       }, function(err, response){
         console.log(response || err);
         socket_io.emit('youtube_result',response);

@@ -64,6 +64,22 @@ $(function(){
 	socket.emit('youtube_query',{title:'gatos'});
 	socket.on('youtube_result',function(youtube_response){
 		var found_content = youtube_response;
+        var i=0;
+        var lenght_content= found_content.length; 
+		for(i;i<lenght_content;i++)
+		{
+			var video_entry= found_content.items[i];
+			var title= video_entry.snippet.title;
+			var thumbnail= video_entry.thumbnails.high.url;
+			var idVideo= video_entry.id.videoId;
+			
+			var video_tile = {
+				title: title,
+				thumbnail: thumbnail,
+				idVideo: idVideo
+			};
+		}
+
 	});
 	tablet.on("swipeleft",function(ev){
 		return remote.next();
