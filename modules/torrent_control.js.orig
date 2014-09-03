@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 pirateBay = require('thepiratebay');
 
 exports.respond = function(torrent,socket_io){
@@ -7,5 +8,5 @@ exports.respond = function(torrent,socket_io){
 			});	
 	});
 }
-
-
+=======
+>>>>>>> YouTube-API

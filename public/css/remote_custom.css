@@ -23,10 +23,22 @@ body{
 
 .section-icon img{
 	margin: 0px 10px 10px 0px;
+	width: 90px;
+	height: 90px;
 	float: left;
 }
 
 .search-bar input{
+	border-width: 1px;
+	border-radius: 5px;
+	border-style: solid;
+	font-size: 20px;
+	width: 200px;
+	height:  50px;
+	margin: 0px 10px 10px 0px;
+}
+
+.search-bar2 input{
 	border-width: 1px;
 	border-radius: 5px;
 	border-style: solid;

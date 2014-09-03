@@ -7,7 +7,25 @@
 	<body>
 		<div id="tablet">
 			<div class ="section section_0" data-section="0">
-				<h1 class="section-title">Youtube page</h1>
+				<div class="section-icon" >
+					<img src="/images/youtube.png">
+				</div>
+				<div class="section-title">
+					<h1>YouTube Media</h1>
+				</div>
+				
+				<div class="search-bar2">
+				   <input type="text" placeholder="youtube search" >
+				</div>
+				
+				<div class="content_preview_holder">
+					<ul class=""></ul>
+				</div>
+
+				<div class="content_text_holder">
+					<ul class="video-tile"> </ul>
+				</div>
+
 			</div>
 			<div class ="section section_1" data-section="1">
 				<div class="section-icon" >
@@ -51,4 +69,16 @@
 			</div>
 		</li>
 	</script>
+	<script id="youtubeTpl" type="text/template">
+		<li class="block">
+			<div class="tile">	
+				<h3 class="tile-title">{{title}}</h3>
+				<p>Id Video: {{idVideo}}</p>
+				<p>URL: {{thumbnail}}</p>
+			</div>
+		</li>
+	</script>
 </html>
+
+
+

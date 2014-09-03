@@ -54,6 +54,7 @@ $(function(){
 	remote.init();
 	var tab = document.getElementById('tablet');
 	var tablet = new Hammer(tab);
+	
 	var socket = io('/torrent');
 	$(".search-bar input").change(function() {
 		socket.emit('torrent_query',{title:$(this).val()});
@@ -80,7 +81,40 @@ $(function(){
 			$('ul.torrent-info').append(html);
 		}
 	});
+
+	socket_youtube = io('/youtube');
+	// socket.emit('youtube_query',{title:'gatos'});
+	$(".search-bar2 input").change(function() {
+		socket_youtube.emit('youtube_query',{title:$(this).val()});
+ 	});
+	socket_youtube.on('youtube_result',function(youtube_response){
+		var found_content = youtube_response;
+        var i=0;
+        var lenght_content= found_content.items.length; 
+		for(i;i<lenght_content;i++)
+		{
+			var video_entry= found_content.items[i];
+			var title= video_entry.snippet.title;
+			var thumbnail= video_entry.snippet.thumbnails.high.url;
+			var idVideo= video_entry.id.videoId;
+			
+			var video_tile = {
+				title: title,
+				thumbnail: thumbnail,
+				idVideo: idVideo
+			};
+
+			var template = $('#youtubeTpl').html();
+				html = Mustache.to_html(template, video_tile);
+
+			$('ul.video-tile').append(html);
+		}
+
+	});
+
 	tablet.on("swipeleft",function(ev){
 		return remote.next();
 	});
+
 });
+

@@ -25,4 +25,9 @@ var torrent_socket = io.of('/torrent').on('connection', function(socket){
 	torrent_control.respond(torrent_socket, socket);
 });
 
+var youtube_socket = io.of('/youtube').on('connection', function(socket){
+  console.log('connection youtube DONE');
+  youtube_control.respond(youtube_socket,socket);
+});
+
 
