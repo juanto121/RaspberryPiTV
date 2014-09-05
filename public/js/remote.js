@@ -76,7 +76,7 @@ $(function(){
 			};
 
 			var template = $('#torrentTpl').html(),
-				html = Mustache.to_html(template, torrent_info);
+			var	html = Mustache.to_html(template, torrent_info);
 
 			$('ul.torrent-info').append(html);
 		}
@@ -105,7 +105,7 @@ $(function(){
 			};
 
 			var template = $('#youtubeTpl').html();
-				html = Mustache.to_html(template, video_tile);
+			var	html = Mustache.to_html(template, video_tile);
 
 			$('ul.video-tile').append(html);
 		}
