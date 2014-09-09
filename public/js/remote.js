@@ -26,7 +26,7 @@ remote.init = function(){
 	return remote.loadSection();
 }
 
-remote.next = function(){
+remote.nextTab = function(){
 	var nextSection, pageWidth, section;
 	nextSection = (remote.currentSection + 1)%2;
 	pageWidth = $(window).width();
@@ -38,7 +38,7 @@ remote.next = function(){
 		return $(followingSection).animate({
 			left : 0
 		}, 300,function(){
-			console.log('slidein_nextSection');
+			//Section Slide Success
 		});
 	};
 	section = remote.getSection(remote.currentSection);
@@ -50,7 +50,7 @@ remote.next = function(){
 	});
 }
 
-$(function(){	
+$(function(){
 	remote.init();
 	var tab = document.getElementById('tablet');
 	var tablet = new Hammer(tab);
@@ -76,14 +76,14 @@ $(function(){
 			};
 
 			var template = $('#torrentTpl').html(),
-			var	html = Mustache.to_html(template, torrent_info);
+				html = Mustache.to_html(template, torrent_info);
 
 			$('ul.torrent-info').append(html);
 		}
 	});
 
 	socket_youtube = io('/youtube');
-	// socket.emit('youtube_query',{title:'gatos'});
+	
 	$(".search-bar2 input").change(function() {
 		socket_youtube.emit('youtube_query',{title:$(this).val()});
  	});
@@ -91,29 +91,36 @@ $(function(){
 		var found_content = youtube_response;
         var i=0;
         var lenght_content= found_content.items.length; 
+        $('ul.video-tile').empty();
 		for(i;i<lenght_content;i++)
 		{
 			var video_entry= found_content.items[i];
 			var title= video_entry.snippet.title;
-			var thumbnail= video_entry.snippet.thumbnails.high.url;
+			var thumbnail= video_entry.snippet.thumbnails.medium.url;
 			var idVideo= video_entry.id.videoId;
-			
+
 			var video_tile = {
 				title: title,
 				thumbnail: thumbnail,
 				idVideo: idVideo
 			};
 
-			var template = $('#youtubeTpl').html();
-			var	html = Mustache.to_html(template, video_tile);
+			var template = $('#youtubeTpl').html(),
+				html = Mustache.to_html(template, video_tile);
 
 			$('ul.video-tile').append(html);
+
+			if( i == 0 ){
+				$('#'+idVideo).addClass("selected_video");
+			}
 		}
+
+
 
 	});
 
 	tablet.on("swipeleft",function(ev){
-		return remote.next();
+		return remote.nextTab();
 	});
 
 });

@@ -1,0 +1,26 @@
+li.selected{
+	color:black;
+	font-size: 80px;
+	
+}
+
+li.title{
+	display: inline;
+	margin: 0 100 0 0;
+}
+
+ul.section_titles{
+	margin: 0 auto;
+	display: inline;
+	color:grey;
+	list-style: none;
+	font-family: 'Roboto', sans-serif;
+	font-size: 50px;
+}
+
+.nav_title{
+	text-align: center;
+}
+
+
+

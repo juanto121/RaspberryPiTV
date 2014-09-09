@@ -12,19 +12,20 @@ body{
 .section{
 	width: 850px;
 	height: 450px;
-	margin: 20px 0px 0px 50px; 
+	margin: 20px 0px 0px 0px; 
 	position: relative;
 	display: none;
 }
 
-.section-title h1{
-	
+
+.selected_video{
+	background-color: #ededed;
 }
 
 .section-icon img{
+	width: 80px;
 	margin: 0px 10px 10px 0px;
-	width: 90px;
-	height: 90px;
+	height: 80px;
 	float: left;
 }
 
@@ -38,19 +39,98 @@ body{
 	margin: 0px 10px 10px 0px;
 }
 
-.search-bar2 input{
-	border-width: 1px;
-	border-radius: 5px;
-	border-style: solid;
-	font-size: 20px;
-	width: 200px;
-	height:  50px;
-	margin: 0px 10px 10px 0px;
-}
 
 .content_preview_holder{
 	margin:10px;
 }
 .content_text_holder{
 	margin:10px;
+	
+}
+
+li.thumbnail{
+	list-style: none;
+	display: inline-block;
+	cursor: pointer;
+}
+li.thumbnail p{	
+	width:80px;
+	overflow: hidden;
+	white-space: nowrap; 
+	text-overflow: ellipsis;
+	margin:10px;
+}
+
+.image_tile{
+	width:100px;
+	height:80px;
+	margin:10px;
+	display:inline; 
+}
+
+/* reset webkit search input browser style */
+input {
+	outline: none;
+}
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+	font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none; /* remove the search and cancel icon */
+}
+
+/* search input field */
+input[type=search] {
+
+	background: #ededed url('/images/Search-32.png') no-repeat 4px center;
+	border: solid 1px #ccc;
+	padding: 9px 10px 9px 32px;
+	
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #6dcff6;
+	
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+/* demo B */
+#search_bar input[type=search] {
+	width: 25px;
+	padding-left: 10px;
+	color: transparent;
+	cursor: pointer;
+}
+#search_bar  input[type=search]:hover {
+	background-color: #fff;
+}
+#search_bar  input[type=search]:focus {
+	width: 100px;
+	padding-left: 32px;
+	color: #000;
+	background-color: #fff;
+	cursor: auto;
+}
+#search_bar  input:-moz-placeholder {
+	color: transparent;
+}
+#search_bar input::-webkit-input-placeholder {
+	color: transparent;
+}
+
+.content_preview_holder{
+	width: 100%;
 }
