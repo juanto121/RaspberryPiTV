@@ -52,6 +52,7 @@ remote.nextTab = function(){
 
 $(function(){
 	remote.init();
+	video_slider.init();
 	var tab = document.getElementById('tablet');
 	var tablet = new Hammer(tab);
 	
@@ -100,6 +101,7 @@ $(function(){
 			var idVideo= video_entry.id.videoId;
 
 			var video_tile = {
+				number: i,
 				title: title,
 				thumbnail: thumbnail,
 				idVideo: idVideo
