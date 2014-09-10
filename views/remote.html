@@ -23,8 +23,11 @@
 				</div>
 
 				<div class="content_text_holder">
-					<ul id="contenidoVideo">
-					</ul>			
+					<div class="bubble">
+						<div id="video_information">
+						</div>	
+					</div>
+
 				</div>
 			</div>
 			<div class ="section" data-section="1">
@@ -75,6 +78,15 @@
 		<li id={{idVideo}} slide-id={{number}} class="thumbnail">
 			<img src={{thumbnail}} class="image_tile">
 			<p>{{title}}</p>
+			<div class="hidden">
+				<h2>
+					{{title}}
+				</h2>
+				<br>
+				<p>
+					{{description}}
+				</p>
+			</div>
 		</li>
 	</script>
 
