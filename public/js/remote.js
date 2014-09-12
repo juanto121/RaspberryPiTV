@@ -63,15 +63,25 @@ $(function(){
 	socket.on('torrent_result', function(torrent_response){
 		var found_content = torrent_response;
 		var index;
+		$('ul.torrent-info').empty();
+        $('#slider').css("left",0);
 		var content_length = found_content.length;
-		for(index = 0; index < content_length; ++index){
+		
+		for(index = 0; index < 5; ++index){
 			torrent_entry = found_content[index];
 			var name = torrent_entry.name,
 				link = torrent_entry.link,
+				seeders = torrent_entry.seeders,
 				size = torrent_entry.size;
+
+				var G=(255*seeders)/100,
+					R=(255*(100-seeders))/100,
+					B=0;
 
 			torrent_info = {
 				name : name,
+				number:index,
+				seeders:seeders,
 				link : link,
 				size : size,
 			};
@@ -80,7 +90,15 @@ $(function(){
 				html = Mustache.to_html(template, torrent_info);
 
 			$('ul.torrent-info').append(html);
+			var current_li = $('#torrent_'+index);
+			var colors = 'rgb('+Math.round(R)+','+Math.round(G)+','+B+')';
+			$(current_li).css('background-color',colors);
+			if( index == 0 ){
+				current_li.addClass("selected_video");
+			}
 		}
+		video_slider.changeVideoInformation(video_slider.getCurrentSlide());
+
 	});
 
 	socket_youtube = io('/youtube');

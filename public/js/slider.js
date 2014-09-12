@@ -48,6 +48,7 @@ slider_pan.on("pan",function(ev){
 	var deltax = 0;
 	var displacement = ev.distance;
 	//console.log(Math.round(displacement%100) > 98);
+	console.log(displacement);
 	if(direction == Hammer.DIRECTION_LEFT)
 	{
 		deltax = -2;

@@ -12,6 +12,7 @@ console.log('out youtube-search');
       console.log(auto);
 			var resultado = youtubeAPI.search.list({
         q: youtube_query,
+        maxResults: 5,
         part: 'snippet',
         type:'video'
       }, function(err, response){
