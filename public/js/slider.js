@@ -5,6 +5,12 @@ video_slider.getCurrentSlide=function(){
 	return $('.selected_video');
 }
 
+video_slider.getCurrentSlideId=function(current_slide){
+	var current_slide_id = $(current_slide).attr("slide-id");
+	return parseInt(current_slide_id) ;
+}
+
+
 
 video_slider.getNextSlide = function(current_slide){
 	var current_slide_id = $(current_slide).attr("slide-id");
@@ -26,11 +32,15 @@ video_slider.nextSlide = function(){
 	var next_slide = video_slider.getNextSlide(current_slide);
 	next_slide.addClass('selected_video');
 	this.changeVideoInformation(next_slide);
+	return video_slider.getCurrentSlideId(next_slide);
 
 }
 
 video_slider.changeVideoInformation = function(current_slide){
-	var video_info = $('#video_information');
+	var current_section_id = remote.currentSection;
+	var current_section=remote.getSection(current_section_id);
+    
+    var video_info = current_section.find('#video_information');
 	video_info.empty();
 	var hidden_info = ($(current_slide)).find('.hidden')[0];
 	$(hidden_info).removeClass('hidden');
@@ -56,10 +66,14 @@ slider_pan.on("pan",function(ev){
 	if(direction == Hammer.DIRECTION_RIGHT){
 		deltax = 2;
 	}
-	if( Math.round(displacement%100) > 98){
-		video_slider.nextSlide();
-	}
+	
 	if(ev.isFinal){
+
+		if( Math.round(displacement)>60){
+		var id= video_slider.nextSlide();
+		//deltax=-120*(1+id);
+	}
+
 		//ver cuanto se alejo del principio (left)
 		//o ver el current_slide y centrarlo, 
 		//al multiplo de li.width, ie. li.width * current_slide

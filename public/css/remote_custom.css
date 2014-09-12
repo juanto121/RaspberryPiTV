@@ -1,5 +1,14 @@
 html ,body{
   height: 600px;
+  -webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+
+    
+
 }
 
 body{
@@ -39,6 +48,7 @@ body{
 #slider{
 	position:relative;
 	left:0px;
+	white-space:nowrap;
 }
 .content_text_holder{
 	margin:10px;
@@ -58,18 +68,21 @@ li.thumbnail p{
 	margin:10px;
 }
 
-.image_tile{
+img.image_tile{
 	width:100px;
 	height:80px;
 	margin:10px;
 	display:inline; 
+	-webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+    user-drag: none;
 }
 
-.image_tile_torrent{
+label.image_tile{
 	width:100px;
-	text-align:center;
 	height:80px;
 	margin:40px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
 	display:inline; 
 }
 
