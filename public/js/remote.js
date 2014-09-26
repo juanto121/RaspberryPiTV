@@ -1,6 +1,3 @@
-
-
-
 $(function(){
 	remote.init();
 	video_slider.init();
@@ -27,7 +24,7 @@ $(function(){
 
 				var G=(255*seeders)/100,
 					R=(255*(100-seeders))/100,
-					B=0;
+					B=20;
 
 			torrent_info = {
 				name : name,

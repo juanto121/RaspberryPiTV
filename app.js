@@ -8,7 +8,7 @@ var express = require('express')
   , youtube_control = require('./modules/youtube_control');
 
 
-server.listen(process.env.TEST_PORT || 8080);
+server.listen(process.env.TEST_PORT || 80);
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(express.static(path.join(__dirname + '/views')));
 
@@ -22,11 +22,12 @@ app.get('/remote', function (req, res) {
 });
 
 var torrent_socket = io.of('/torrent').on('connection', function(socket){
+  console.log('A Remote Connected to Torrent Room');
 	torrent_control.respond(torrent_socket, socket);
 });
 
 var youtube_socket = io.of('/youtube').on('connection', function(socket){
-  console.log('connection youtube DONE');
+  console.log('A Remote Connected to Youtube Room');
   youtube_control.respond(youtube_socket,socket);
 });
 
