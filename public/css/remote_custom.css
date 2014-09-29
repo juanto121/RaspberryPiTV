@@ -1,12 +1,12 @@
 /*------------------------------------------------------------------------ GLOBAL */ 
 html ,body{
-  height: 600px;
-  -webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;  
+ 	height: 600px;
+ 	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;  
 }
 
 body{
@@ -17,17 +17,20 @@ body{
 #tablet{
 	float: left;
 }
-@media only screen and (min-width: 481px){
+@media only screen and (max-width: 481px){
+	#tablet{
+		width: 480px;
+	}
+	
+}
+@media only screen and (min-width: 480px){
 	#tablet{
 		width: 700px;
+	}
 
-	}
 }
-@media only screen and (min-width: 481px){
-	#tablet{
-		min-width: 386px;
-	}
-}
+
+
 
 .center{
   position: fixed;
@@ -127,7 +130,6 @@ input::-webkit-search-cancel-button {
 
 /* search input field */
 input[type=search] {
-
 	background: #ededed url('/images/Search-32.png') no-repeat 4px center;
 	border: solid 1px #ccc;
 	padding: 9px 10px 9px 32px;
@@ -135,7 +137,6 @@ input[type=search] {
 	-webkit-border-radius: 10em;
 	-moz-border-radius: 10em;
 	border-radius: 10em;
-	
 	-webkit-transition: all .5s;
 	-moz-transition: all .5s;
 	transition: all .5s;
@@ -232,6 +233,9 @@ p.video_description{
 
 }
 
+.thumbnail_description{
+	width: 100%;
+}
 
 .bubble {
 	position: relative;
