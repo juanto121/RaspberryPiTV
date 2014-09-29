@@ -47,10 +47,7 @@ video_slider.changeVideoInformation = function(current_slide){
 	video_info.append(hidden_info);
 }
 
-var slider_touchable = new Hammer(document.getElementById('slider'));
-slider_touchable.on("swipeleft",function(ev){
-	video_slider.nextSlide();
-});
+
 slider_pan = new Hammer(document.getElementById('slider'));
 slider_pan.on("pan",function(ev){
 	

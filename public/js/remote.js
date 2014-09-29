@@ -49,12 +49,13 @@ $(function(){
 
 	});
 
-	socket_youtube = io('/youtube');
+	var socket_youtube = io.connect('/youtube');
 	
+
 	$(".search-bar2 input").change(function() {
 		socket_youtube.emit('youtube_query',{title:$(this).val()});
-
  	});
+
 	socket_youtube.on('youtube_result',function(youtube_response){
 		var found_content = youtube_response;
         var i=0;

@@ -12,6 +12,18 @@
 
 		<hr>
 
+		<div class="content_preview_holder">
+					<ul id="slider" class="video-tile"> </ul>
+				</div>
+
+				<div class="content_text_holder">
+					
+						<div id="video_information" class="bubble">
+					
+					</div>
+
+				</div>
+
 		<div class="images_holder">
 		</div>
 
@@ -23,6 +35,26 @@
 	</body>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/screen_custom.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="js/libs/hammer.js"></script>
+<script src="js/screen.js"></script>
+
+<script id="youtubeTpl" type="text/template">
+		<li id={{idVideo}} slide-id={{number}} class="thumbnail">
+			<img src={{thumbnail}} class="image_tile">
+			<p>{{title}}</p>
+			<div class="hidden">
+				<h2>
+					{{title}}
+				</h2>
+				<p class="video_description">
+					{{description}}
+				</p>
+			</div>
+		</li>
+	</script>
 
 </html>
 

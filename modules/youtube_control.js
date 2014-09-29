@@ -18,6 +18,7 @@ exports.respond = function(youtube,socket_io){
       }, function(err, response){
         if(response){
           socket_io.emit('youtube_result',response);
+          socket_io.broadcast.emit('youtube_result',response);
         }else{
           console.log(err);
         }
