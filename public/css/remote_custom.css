@@ -17,18 +17,7 @@ body{
 #tablet{
 	float: left;
 }
-@media only screen and (max-width: 481px){
-	#tablet{
-		width: 480px;
-	}
-	
-}
-@media only screen and (min-width: 480px){
-	#tablet{
-		width: 700px;
-	}
 
-}
 
 
 
@@ -113,7 +102,7 @@ body{
 	float: left;
 }
 
-/* reset webkit search input browser style */
+
 input {
 	outline: none;
 }
@@ -128,7 +117,6 @@ input::-webkit-search-cancel-button {
 	display: none; /* remove the search and cancel icon */
 }
 
-/* search input field */
 input[type=search] {
 	background: #ededed url('/images/Search-32.png') no-repeat 4px center;
 	border: solid 1px #ccc;
@@ -188,6 +176,20 @@ input[type=search]:focus {
 }
 
 
+
+
+@media screen and (max-width:360px){
+	#tablet{
+		max-width:360px;
+	}
+}
+@media only screen and (min-width:420px){
+	#tablet{
+		max-width:600px;
+	}
+}
+
+
 li.thumbnail{
 	list-style: none;
 	display: inline-block;
@@ -234,7 +236,17 @@ p.video_description{
 }
 
 .thumbnail_description{
-	width: 100%;
+		-ms-word-break: break-all;
+
+     /* Be VERY careful with this, breaks normal words wh_erever */
+     word-break: break-all;
+
+     /* Non standard for webkit */
+     word-break: break-word;
+
+-webkit-hyphens: auto;
+   -moz-hyphens: auto;
+        hyphens: auto;
 }
 
 .bubble {
