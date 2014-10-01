@@ -1,6 +1,8 @@
+
 video_slider.init = function(){
 
 }
+
 video_slider.getCurrentSlide=function(){
 	return $('.selected_video');
 }
