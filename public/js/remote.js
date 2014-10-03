@@ -106,9 +106,7 @@ $(function(){
 
 		//video_slider.changeVideoInformation(video_slider.getCurrentSlide());
 	});
-	$('#next_tab_button').on("click",function(){
-		return remote.nextTab();
-	});
+
 	tablet.on("swipeleft",function(ev){
 		return remote.nextTab();
 	});
