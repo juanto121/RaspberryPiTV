@@ -2,7 +2,6 @@ var youtubeAPI = require("youtube-api");
 os = require('./os_control');
 
 exports.respond = function(youtube,socket_io){
-
 	socket_io.on('youtube_query',function(yt_query){
     youtube_query = yt_query.title;
 
@@ -26,4 +25,24 @@ exports.respond = function(youtube,socket_io){
       });
 			
 	});
+
+  socket_io.on('video',function(data){
+    var id = data.video_id,
+        url = "http://www.youtube.com/watch?v="+id;
+
+    if(data.action === "download"){
+      var runShell = new os('youtube-dl',['-o','./vid/%(id)s.%(ext)s','-f','/18/22',url],
+        function (me, buffer) {
+            me.stdout = buffer.toString();
+            socket.emit("loading",{output: me.stdout});
+            console.log(me.stdout);
+         },
+        function () {
+            //child = spawn('omxplayer',[id+'.mp4']);
+            //omx.start('vid/'+id+'.mp4');
+            console.log("omxplayer started");
+        });
+    }
+  });
+
 }
