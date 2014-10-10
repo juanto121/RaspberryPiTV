@@ -1,4 +1,5 @@
 var youtubeAPI = require("youtube-api");
+os = require('./os_control');
 
 exports.respond = function(youtube,socket_io){
 
