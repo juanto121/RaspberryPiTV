@@ -72,7 +72,8 @@ body{
 
 /*------------------------------------------------------------------------ NAV BAR */ 
 .hidden{
-	display: none;
+	display:none;
+
 }
 
 .section{
@@ -198,7 +199,7 @@ li.thumbnail p{
 	width:80px;
 	overflow: hidden;
 	white-space: nowrap; 
-	text-overflow: ellipsis;
+	/*text-overflow: ellipsis;*/
 	margin:10px;
 }
 

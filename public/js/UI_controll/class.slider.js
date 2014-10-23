@@ -10,9 +10,10 @@ var VideoSlider = (function(){
 		this.current_slide = obj.default_slide;
 		this.selected_class = obj.selected_class;
 		this.slider_pan = obj.slider_pan;
+		this.video_info = obj.vid_info;
 	}
 	vid_slider.createEvents = function(){
-	//	this.slider_pan.on("pan",this.move.bind(this));
+		this.slider_pan.on("pan",this.move.bind(this));
 	}
 	vid_slider.move = function(ev){
 		var direction = ev.direction;
@@ -24,17 +25,32 @@ var VideoSlider = (function(){
 		if(direction == Hammer.DIRECTION_RIGHT)
 			{deltax = 2;}
 		if(ev.isFinal){
-			if( Math.round(displacement)>60){
-				var id= this.nextSlide(1);
+			var final_displacement = Math.round(displacement);
+			if( final_displacement > 60){
+				if(Hammer.DIRECTION_LEFT == ev.direction){
+					var id = this.nextSlide(1);
+				}else{
+					var id = this.nextSlide(-1);
+				}
 			}
+			
 		}
 		this.slider_element.css("left","+="+deltax);
 	}
 	vid_slider.nextSlide = function(direction){
+		//this.current_slide.find('div.thumbnail_description').addClass('hidden');
 		this.current_slide.removeClass(this.selected_class);
 		var next_slide_id = this.current_slide_id + direction;
 		var next_slide = this.slider_element.find("[slide-id='"+next_slide_id+"']");
 		next_slide.addClass(this.selected_class);
+		this.current_slide = next_slide;
+		this.current_slide_id = this.current_slide_id + direction;
+		this.changeVideoInfo();
+	}
+	vid_slider.changeVideoInfo = function(){
+		var hidden_info = this.current_slide.find('.thumbnail_description');
+		hidden_info.removeClass('hidden');
+		this.video_info.html(hidden_info);
 	}
 	return VideoSlider;
 })();

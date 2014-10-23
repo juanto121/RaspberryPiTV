@@ -1,4 +1,4 @@
-
+/*
 video_slider.init = function(){
 
 }
@@ -41,7 +41,6 @@ video_slider.nextSlide = function(){
 video_slider.changeVideoInformation = function(current_slide){
 	var current_section_id = remote.currentSection;
 	var current_section=remote.getSection(current_section_id);
-    
     var video_info = current_section.find('#video_information');
 	video_info.empty();
 	var hidden_info = ($(current_slide)).find('.hidden')[0];
@@ -49,6 +48,7 @@ video_slider.changeVideoInformation = function(current_slide){
 	video_info.append(hidden_info);
 }
 
+    
 
 slider_pan = new Hammer(document.getElementById('slider'));
 slider_pan.on("pan",function(ev){
@@ -80,3 +80,4 @@ slider_pan.on("pan",function(ev){
 	}
 	$('#slider').css("left","+="+deltax);
 });
+*/
