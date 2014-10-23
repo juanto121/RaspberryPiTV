@@ -1,6 +1,6 @@
 $(function(){
 	remote.init();
-	//video_slider.init();
+	
 
 	var tab = document.getElementById('tablet');
 	var tablet = new Hammer(tab);
@@ -46,7 +46,19 @@ $(function(){
 				current_li.addClass("selected_video");
 			}
 		}
-		video_slider.changeVideoInformation(video_slider.getCurrentSlide());
+
+		var slider_element = $('.section[data-section="1"] #slider');
+		var current_slide = $('.section[data-section="1"] .selected_video');
+		var video_info = $('.section[data-section="1"] #video_information');
+		var slider_pan_hammer = new Hammer(slider_element[0]);
+		var sliderClass = new VideoSlider( {slider:slider_element,
+											default_slide_id:0,
+											default_slide:current_slide,
+											selected_class:'selected_video',
+											slider_pan:slider_pan_hammer,
+											vid_info:video_info
+											} );
+		sliderClass.changeVideoInfo();
 
 	});
 
