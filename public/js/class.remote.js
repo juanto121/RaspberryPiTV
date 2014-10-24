@@ -60,12 +60,49 @@ var Remote = (function(){
 					channelTitle: channel_title,
 					publishedAt: published_time
 				};
+
+				var tile_html = 
+					Mustache.to_html(this.yt_template.html, video_tile);
+
+				this.slider.append(tile_html);
+				if(lenght === 0){
+					$('#'+idVideo).addClass("selected_video");
+				}
 			}
+			this.slider.update();
 		}
 
 
 		if(response.room === 'torrent'){
+			torrent_entry = found_content[index];
+			var name = torrent_entry.name,
+				link = torrent_entry.link,
+				seeders = torrent_entry.seeders,
+				size = torrent_entry.size;
 
+				var G=(255*seeders)/100,
+					R=(255*(100-seeders))/100,
+					B=20;
+
+			torrent_info = {
+				name : name,
+				number:index,
+				seeders:seeders,
+				link : link,
+				size : size,
+			};
+
+			var template = $('#torrentTpl').html(),
+				html = Mustache.to_html(template, torrent_info);
+
+			$('#slider').append(html);
+
+			var current_li = $('#torrent_'+index);
+			var colors = 'rgb('+Math.round(R)+','+Math.round(G)+','+B+')';
+			$(current_li).css('background-color',colors);
+			if( index == 0 ){
+				current_li.addClass("selected_video");
+			}
 		}
 
 		/*
