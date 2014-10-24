@@ -53,5 +53,15 @@ var VideoSlider = (function(){
 		hidden_info.removeClass('hidden');
 		this.video_info.html(hidden_info);
 	}
+	vid_slider.update = function(){
+		this.createVariables({
+			slider:this.slider_element,
+			default_slide_id:0,
+			default_slide:$('.'+this.selected_class),
+			selected_class:'selected_video',
+			slider_pan:this.slider_pan,
+			vid_info:this.video_info
+							});
+	}
 	return VideoSlider;
 })();
