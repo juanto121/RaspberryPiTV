@@ -65,11 +65,14 @@ var Remote = (function(){
 					Mustache.to_html(this.yt_template.html, video_tile);
 
 				this.slider.append(tile_html);
+				var current_video = $('#'+idVideo);
 				if(lenght === 0){
-					$('#'+idVideo).addClass("selected_video");
+					current_video.addClass("selected_video");
 				}
+				current_video.on("click",this.play);
 			}
 			this.slider.update();
+
 		}
 
 
