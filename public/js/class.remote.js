@@ -27,6 +27,9 @@ var Remote = (function(){
 			socket_result_room:'torrent_result',
 			result_handle:this.handleResponse.bind(this)
 		});
+
+		this.yt_template = $('youtubeTpl');
+		this.torrent_template = $('torrentTpl');
 	}
 
 	remote.createEvents = function(){
@@ -36,6 +39,35 @@ var Remote = (function(){
 	}
 
 	remote.handleResponse = function(response){
+		if(response.room === 'youtube'){
+			var content = response.res_obj;
+			var lenght = content.lenght;
+			while(lenght--){
+				var video_entry= content.items[lenght];
+				var title= video_entry.snippet.title;
+				var thumbnail= video_entry.snippet.thumbnails.medium.url;
+				var idVideo= video_entry.id.videoId;
+				var video_description = video_entry.snippet.description;
+				var channel_title = video_entry.snippet.channelTitle;
+				var published_time = video_entry.snippet.publishedAt;
+
+				var video_tile = {
+					number: i,
+					title: title,
+					thumbnail: thumbnail,
+					idVideo: idVideo,
+					description:video_description,
+					channelTitle: channel_title,
+					publishedAt: published_time
+				};
+			}
+		}
+
+
+		if(response.room === 'torrent'){
+
+		}
+
 		/*
 			TODO:
 			Asignar a template que corresponda.
