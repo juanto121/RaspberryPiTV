@@ -47,9 +47,9 @@ $(function(){
 			}
 		}
 
-		var slider_element = $('.section[data-section="1"] #slider');
-		var current_slide = $('.section[data-section="1"] .selected_video');
-		var video_info = $('.section[data-section="1"] #video_information');
+		var slider_element = $(' #slider');
+		var current_slide = $(' .selected_video');
+		var video_info = $('#video_information');
 		var slider_pan_hammer = new Hammer(slider_element[0]);
 		var sliderClass = new VideoSlider( {slider:slider_element,
 											default_slide_id:0,
