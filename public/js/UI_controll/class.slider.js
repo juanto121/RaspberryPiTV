@@ -11,6 +11,7 @@ var VideoSlider = (function(){
 		this.selected_class = obj.selected_class;
 		this.slider_pan = obj.slider_pan;
 		this.video_info = obj.vid_info;
+		this.slider_element.css("left",0);
 	}
 	vid_slider.createEvents = function(){
 		this.slider_pan.on("pan",this.move.bind(this));

@@ -1,4 +1,4 @@
-var ytsocket = (function(){
+var YtSocket = (function(){
 
 
 	var socket_youtube = io.connect('/youtube');

@@ -73,8 +73,7 @@ $(function(){
 		var found_content = youtube_response;
         var i=0;
         var lenght_content= found_content.items.length; 
-        $('ul.video-tile').empty();
-        $('#slider').css("left",0);
+        $('#slider').empty();
 		for(i;i<lenght_content;i++)
 		{
 			var video_entry= found_content.items[i];
@@ -98,7 +97,7 @@ $(function(){
 			var template = $('#youtubeTpl').html(),
 				html = Mustache.to_html(template, video_tile);
 
-			$('ul.video-tile').append(html);
+			$('#slider').append(html);
 
 			if( i == 0 ){
 				$('#'+idVideo).addClass("selected_video");
