@@ -69,7 +69,7 @@ var Remote = (function(){
 				if(lenght === 0){
 					current_video.addClass("selected_video");
 				}
-				current_video.on("click",this.play);
+				current_video.on("click",this.play.bind(this));
 			}
 			this.slider.update();
 
@@ -101,6 +101,7 @@ var Remote = (function(){
 			$('#slider').append(html);
 
 			var current_li = $('#torrent_'+index);
+			current_li.on("click",this.play.bind(this));
 			var colors = 'rgb('+Math.round(R)+','+Math.round(G)+','+B+')';
 			$(current_li).css('background-color',colors);
 			if( index == 0 ){
@@ -108,16 +109,10 @@ var Remote = (function(){
 			}
 		}
 
-		/*
-			TODO:
-			Asignar a template que corresponda.
-			Limpiar y actualizar Slider con nueva info.
-			suscribir clic en c/<li>,play.
-		*/
 	}
 
-	remote.play = function(video_id){
-
+	remote.play = function(event){
+		
 	}
 
 	remote.changeSection = function(){
