@@ -112,13 +112,15 @@ $(function(){
 		var slider_element = $('#slider');
 		var current_slide = $('.selected_video');
 		var video_info = $('#video_information');
+		var thumbnail_description = $('.thumbnail_description')
 		var slider_pan_hammer = new Hammer(slider_element[0]);
 		var sliderClass = new VideoSlider( {slider:slider_element,
 											default_slide_id:0,
 											default_slide:current_slide,
 											selected_class:'selected_video',
 											slider_pan:slider_pan_hammer,
-											vid_info:video_info
+											vid_info:video_info,
+											description_class:'thumbnail_description'
 											} );
 		sliderClass.changeVideoInfo();
 	});
