@@ -13,6 +13,7 @@ var VideoSlider = (function(){
 		this.video_info = obj.vid_info;
 		this.slider_element.css("left",0);
 		this.general_direction = 0;
+		this.thumbnail_description = obj.description_class;
 	}
 	vid_slider.createEvents = function(){
 		this.slider_pan.on("pan",this.move.bind(this));
@@ -47,7 +48,6 @@ var VideoSlider = (function(){
 		this.slider_element.css("left","+="+deltax);
 	}
 	vid_slider.nextSlide = function(direction){
-		//this.current_slide.find('div.thumbnail_description').addClass('hidden');
 		this.current_slide.removeClass(this.selected_class);
 		var next_slide_id = this.current_slide_id + direction;
 		var next_slide = this.slider_element.find("[slide-id='"+next_slide_id+"']");
@@ -57,7 +57,7 @@ var VideoSlider = (function(){
 		this.changeVideoInfo();
 	}
 	vid_slider.changeVideoInfo = function(){
-		var hidden_info = this.current_slide.find('.thumbnail_description');
+		var hidden_info = this.current_slide.find('.'+this.thumbnail_description);
 		this.video_info.html(hidden_info.html());
 	}
 	return VideoSlider;
