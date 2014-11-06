@@ -50,9 +50,6 @@
 						</div>
 				</div>
 
-		
-
-			
 		</div>
 		<div class="center">
   			<a id='#next_tab_button' href='#'>Next</a>
@@ -71,14 +68,12 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="js/libs/hammer.js"></script>
 	<script src="js/libs/jquery-1.11.1.js"></script>
-	<script src="js/slider.js"></script>
 	<script src="js/UI_controll/class.slider.js"></script>
 	<script src="js/remote.js"></script>
 	<script src="js/remoteSection.js"></script>
 
 	<script id="torrentTpl" type="text/template">
-
-	<li id=torrent_{{number}} slide-id={{number}} class="thumbnail">
+		<li id=torrent_{{number}} slide-id={{number}} class="thumbnail">
 			<label for="text" class="image_tile"> {{seeders}} </label>
 			<p>{{name}}</p>
 			<div class="hidden thumbnail_description">
@@ -92,7 +87,7 @@
 			</div>
 		</li>
 	</script>
-		<script id="youtubeTpl" type="text/template">
+	<script id="youtubeTpl" type="text/template">
 		<li id={{idVideo}} slide-id={{number}} class="thumbnail">
 			<img src={{thumbnail}} class="image_tile">
 			<p>{{title}}</p>
