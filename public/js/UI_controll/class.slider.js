@@ -12,29 +12,37 @@ var VideoSlider = (function(){
 		this.slider_pan = obj.slider_pan;
 		this.video_info = obj.vid_info;
 		this.slider_element.css("left",0);
+		this.general_direction = 0;
 	}
 	vid_slider.createEvents = function(){
 		this.slider_pan.on("pan",this.move.bind(this));
 	}
 	vid_slider.move = function(ev){
 		var direction = ev.direction;
+
 		var deltax = 0;
 		var displacement = ev.distance;
 		console.log(displacement);
 		if(direction == Hammer.DIRECTION_LEFT)
-			{deltax = -2;}
+			{
+				deltax = -2;
+			}
 		if(direction == Hammer.DIRECTION_RIGHT)
-			{deltax = 2;}
+			{
+				deltax = 2;
+			}
+		this.general_direction += deltax;
+		console.log(this.general_direction);
 		if(ev.isFinal){
 			var final_displacement = Math.round(displacement);
 			if( final_displacement > 60){
-				if(Hammer.DIRECTION_LEFT == ev.direction){
+				if(this.general_direction < 0){
 					var id = this.nextSlide(1);
 				}else{
 					var id = this.nextSlide(-1);
 				}
 			}
-			
+			this.general_direction = 0;
 		}
 		this.slider_element.css("left","+="+deltax);
 	}
@@ -50,8 +58,7 @@ var VideoSlider = (function(){
 	}
 	vid_slider.changeVideoInfo = function(){
 		var hidden_info = this.current_slide.find('.thumbnail_description');
-		hidden_info.removeClass('hidden');
-		this.video_info.html(hidden_info);
+		this.video_info.html(hidden_info.html());
 	}
 	return VideoSlider;
 })();
