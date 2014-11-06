@@ -12,7 +12,7 @@ var SocketInteract = (function(){
 		this.socket = io('/'+this.socket_room);
 	}
 	socki.createEvents = function(){
-		this.socket.on(this.socket_result_room,this.result_handler(response));
+		this.socket.on(this.socket_result_room,this.result_handler({res_obj:response,room:this.room}));
 	}
 	socki.query = function(query){
 		this.socket.emit(this.socket_room,query);
