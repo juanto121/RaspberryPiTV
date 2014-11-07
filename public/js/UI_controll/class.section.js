@@ -9,7 +9,7 @@ var Section = (function(){
 		this.num_sections = 2;
 		this.section_element = obj.section_element;
 		this.button_next = obj.button_next;
-		this.loadSections();
+		this.loadSection();
 	}
 	section.getSection = function(id){
 		return $('.section[data-section='+id+']');
@@ -20,6 +20,7 @@ var Section = (function(){
 	}	
 
 	section.nextSection = function(){
+		console.log("next");
 		var next_section , page_width, section;
 		next_section = (this.current_section + 1) % this.num_sections;
 		page_width = $(window).width();
@@ -29,16 +30,17 @@ var Section = (function(){
 			$(following_section).css({left:page_width}).show();
 			this.current_section = next_section;
 			return $(following_section).animate({left:0},300,function(){});
-		};
+		}.bind(this);
+		var section = this.getSection(this.current_section);
 		return $(section).animate({left:0-page_width},300,
 			function(){
-				this.section_element.hide();
+				$(this).hide();
 				return slideInNext();
 			})
 	}
 
 	section.createEvents = function(){
-		this.button_next.on("click",this.next_section.bind(this));
+		this.button_next.on("click",this.nextSection.bind(this));
 	}
 	return Section;
 })();

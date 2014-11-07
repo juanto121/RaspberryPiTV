@@ -6,7 +6,7 @@ var VideoSlider = (function(){
 	var vid_slider = VideoSlider.prototype;
 	vid_slider.createVariables = function(obj){
 		this.slider_element = obj.slider;
-		this.current_slide_id = obj.default_slide_id;
+		this.current_slide_id = 0;
 		this.current_slide = obj.default_slide;
 		this.selected_class = obj.selected_class;
 		this.slider_pan = obj.slider_pan;
@@ -67,8 +67,11 @@ var VideoSlider = (function(){
 			default_slide:$('.'+this.selected_class),
 			selected_class:'selected_video',
 			slider_pan:this.slider_pan,
-			vid_info:this.video_info
+			vid_info:this.video_info,
+			description_class:this.thumbnail_description
 							});
+		this.slider_element.css("left",0);
+		this.changeVideoInfo();
 	}
 	return VideoSlider;
 })();
