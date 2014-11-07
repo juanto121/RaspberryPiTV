@@ -26,15 +26,14 @@ exports.respond = function(youtube,socket_io){
 			
 	});
 
-  socket_io.on('video',function(data){
+  socket_io.on('download',function(data){
+    console.log("Trying to download...");
     var id = data.video_id,
         url = "http://www.youtube.com/watch?v="+id;
-
-    if(data.action === "download"){
-      var runShell = new os('youtube-dl',['-o','./vid/%(id)s.%(ext)s','-f','/18/22',url],
+        os.run('youtube-dl',['-o','./vid/%(id)s.%(ext)s','-f','/18/22',id],
         function (me, buffer) {
             me.stdout = buffer.toString();
-            socket.emit("loading",{output: me.stdout});
+            //socket.emit("loading",{output: me.stdout});
             console.log(me.stdout);
          },
         function () {
@@ -42,7 +41,6 @@ exports.respond = function(youtube,socket_io){
             //omx.start('vid/'+id+'.mp4');
             console.log("omxplayer started");
         });
-    }
   });
 
 }

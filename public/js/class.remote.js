@@ -147,6 +147,11 @@ var Remote = (function(){
 
 	remote.download = function(event){
 		console.log(this.slider.current_slide[0].id);
+		if(this.sections.current_section == 0){
+			this.yt_socket.download(this.slider.current_slide[0].id);
+		}else{
+			this.torrent_socket.download(this.slider.current_slide[0]);
+		}
 	}
 
 	remote.changeSection = function(){

@@ -19,7 +19,9 @@ var SocketInteract = (function(){
 	socki.query = function(query){
 		this.socket.emit(this.socket_query_room,query);
 	}
-	
+	socki.download = function(data){
+		this.socket.emit("download",{video_id:data});
+	}
 	return SocketInteract;
 })();
 
