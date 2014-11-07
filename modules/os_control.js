@@ -6,7 +6,7 @@ exports.run = function(command, arguments, callback, end){
 	child.stdout.on('data', function(buffer){
 		callback(this, buffer);
 	});
-
-
+	child.stdout.on('end', end);	
 	console.log('controlling os');
+
 }
