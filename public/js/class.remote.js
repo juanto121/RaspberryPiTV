@@ -98,7 +98,7 @@ var Remote = (function(){
 					current_video.addClass("selected_video");
 				}
 				i++
-			//	current_video.on("click",this.select.bind(this));
+				//current_video.on("click",this.select.bind(this));
 			}
 
 			this.slider.update();

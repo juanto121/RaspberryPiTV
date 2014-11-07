@@ -33,7 +33,8 @@ exports.respond = function(youtube,socket_io){
         os.run('youtube-dl',['-o','./vid/%(id)s.%(ext)s','-f','/18/22',url],
         function (me, buffer) {
             me.stdout = buffer.toString();
-            //socket.emit("loading",{output: me.stdout});
+            socket_io.emit('loading',{output: me.stdout});
+            socket_io.broadcast.emit('loading',{output: me.stdout});
             console.log(me.stdout);
          },
         function () {

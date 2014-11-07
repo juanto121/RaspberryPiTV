@@ -1,5 +1,9 @@
 <html>
 	<head>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
 	</head>
 	<body>
 		<div class="nav_title">
@@ -9,38 +13,59 @@
 				<li id="" class="title torrent_title">Torrent</li>
 			</ul>
 		</div>
-	
-     <hr class="left"><span id="date" class="right"></span>
+	<div class="progress">
+				<div class="progress-bar progress-bar-success"></div>
+			</div>
+    
 		
 
 		<div class="content_preview_holder">
 					<ul id="slider" class="video-tile"> </ul>
 				</div>
 
-				<div class="content_text_holder">
+						
 					
-						<div id="video_information" class="bubble">
 					
-					</div>
 
 				</div>
 
 		<div class="images_holder">
 		</div>
 
-		<div class="info_holder">
-
+		<div class="pure-g">
+			<div class="pure-u-1-2 info_holder">
+				<div id="video_information" class="bubble"></div>
+			</div>
+			<div class="pure-u-1-2 misc_holder">
+					<div class="time-block">
+						<div id="time" ></div>
+						<p id="date" class="title"></p>
+					</div>
+					<div class="weather-block">
+						<ul class="weather"></ul>
+					</div>
+				<span id="date" class="right"></span>
+			</div>
 		</div>
 
 
 	</body>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/screen_custom.css">
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 	<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="js/libs/hammer.js"></script>
 <script src="js/screen.js"></script>
+
+<script id="weatherTpl" type="text/template">
+		<li>
+			<p class="icon">{{icon}}</p>
+			<p class="temp"><span class="low">{{low}}</span> - <span class="high">{{high}}</span></p>	
+			<p class="day">{{day}}</p>	
+		</li>
+	</script>
 
 <script id="youtubeTpl" type="text/template">
 		<li id={{idVideo}} slide-id={{number}} class="thumbnail">
