@@ -44,4 +44,22 @@ exports.respond = function(youtube,socket_io){
         });
   });
 
+  socket_io.on('stream',function(data){
+    console.log("Trying to download...");
+    var id = data.video_id,
+        url = "http://www.youtube.com/watch?v="+id;
+        os.run('youtube-dl',['-g',url],
+        function (me, buffer) {
+            me.stdout = buffer.toString();
+            socket_io.emit('loading',{output: me.stdout});
+            socket_io.broadcast.emit('loading',{output: me.stdout});
+            console.log(me.stdout);
+         },
+        function () {
+            //child = spawn('omxplayer',['./vid/'+id+'.mp4']);
+            //omx.start('./vid/'+id+'.mp4');
+            console.log("omxplayer started");
+        });
+  });
+
 }

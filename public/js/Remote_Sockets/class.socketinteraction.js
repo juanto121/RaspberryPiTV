@@ -22,6 +22,9 @@ var SocketInteract = (function(){
 	socki.download = function(data){
 		this.socket.emit("download",{video_id:data});
 	}
+	socki.play = function(data){
+		this.socket.emit("stream",{video_id:data});
+	}
 	return SocketInteract;
 })();
 
