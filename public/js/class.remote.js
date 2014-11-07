@@ -7,13 +7,32 @@ var Remote = (function(){
 	var remote = Remote.prototype;
 
 	remote.createVariables = function(){
-		this.sections;
 
-		this.slider;
+		this.play_btn = $('#play_btn');
+		this.download_btn = $('#download_btn');
+		this.tablet = new Hammer($('#tablet')[0]);
+		this.ytube_search = $('#ytube_search input');
+		this.torrent_search = $('#torrent_search input');
+		this.button_next_section = $('#btn_next_section');
 
-		this.tablet = new Hammer($('#tablet'));
-		this.ytube_search = $('#ytube_search');
-		this.torrrent_search = $('#torrent_search');
+		var slider_element = $('#slider');
+		var current_slide = $('.selected_video');
+		var video_info = $('#video_information');
+		var thumbnail_description = $('.thumbnail_description')
+		var slider_pan_hammer = new Hammer(slider_element[0]);
+
+		this.slider = new VideoSlider({ slider:slider_element,
+										default_slide:current_slide,
+										selected_class:'selected_video',
+										slider_pan:slider_pan_hammer,
+										vid_info:video_info,
+										description_class:'thumbnail_description'
+									});
+
+
+		
+
+		this.sections = new Section({button_next:this.button_next_section});
 
 		this.yt_socket = new SocketInteract({
 			socket_room:'youtube',
@@ -28,22 +47,31 @@ var Remote = (function(){
 			result_handle:this.handleResponse.bind(this)
 		});
 
-		this.yt_template = $('youtubeTpl');
-		this.torrent_template = $('torrentTpl');
+		this.yt_template = $('#youtubeTpl');
+		this.torrent_template = $('#torrentTpl');
 	}
 
 	remote.createEvents = function(){
 		this.tablet.on("swipeleft",this.changeSection.bind(this));
-		this.ytube_search.change(this.yt_socket.query({title:this.ytube_search.val()}));
-		this.torrent_search.change(this.torrent_socket.query({title:this.torrent_search.val()}));
+		this.ytube_search.change(function(){
+			this.yt_socket.query({title:this.ytube_search.val()});
+		}.bind(this));
+		this.torrent_search.change(function(){
+			this.torrent_socket.query({title:this.torrent_search.val()});
+		}.bind(this));
+		this.play_btn.on("click",this.play.bind(this));
+		this.download_btn.on("click",this.download.bind(this));
 	}
+	
 
 	remote.handleResponse = function(response){
 		if(response.room === 'youtube'){
 			var content = response.res_obj;
-			var lenght = content.lenght;
-			while(lenght--){
-				var video_entry= content.items[lenght];
+			var length = content.items.length;
+			var i = 0;
+			this.slider.slider_element.empty();
+			while(i < length){
+				var video_entry= content.items[i];
 				var title= video_entry.snippet.title;
 				var thumbnail= video_entry.snippet.thumbnails.medium.url;
 				var idVideo= video_entry.id.videoId;
@@ -62,15 +90,17 @@ var Remote = (function(){
 				};
 
 				var tile_html = 
-					Mustache.to_html(this.yt_template.html, video_tile);
+					Mustache.to_html(this.yt_template.html(), video_tile);
 
-				this.slider.append(tile_html);
+				this.slider.slider_element.append(tile_html);
 				var current_video = $('#'+idVideo);
-				if(lenght === 0){
+				if(i === 0){
 					current_video.addClass("selected_video");
 				}
-				current_video.on("click",this.play.bind(this));
+				i++
+			//	current_video.on("click",this.select.bind(this));
 			}
+
 			this.slider.update();
 
 		}
@@ -115,8 +145,13 @@ var Remote = (function(){
 		
 	}
 
-	remote.changeSection = function(){
+	remote.download = function(event){
+		console.log(this.slider.current_slide[0].id);
+	}
 
+	remote.changeSection = function(){
+		console.log("cahnge");
+		this.sections.nextSection();
 	}
 
 	return Remote;
