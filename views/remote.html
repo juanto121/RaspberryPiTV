@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<title>Control</title>
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	</head>
+	<body>
+		<div id="tablet">
+			<div class="nav_row pure-g">
+			</div>
+
+			<div class ="section" data-section="0">	
+				<div class="pure-g">
+					<div class="section-icon pure-u-1-3">
+						<img class="icon" src="/images/youtube_icon.png">
+					</div>
+					<div id="ytube_search" class="pure-u-1-3 search-bar2">
+				   		<input type="search">
+					</div>
+				</div>
+			</div>
+
+				<div class ="section" data-section="1">
+				
+				<div class="section-icon pure-u-1-3" >
+					<img class="icon" src="/images/pirateBay_icon.png">
+				</div>
+				<div id="torrent_search" class="pure-u-1-3 search-bar">
+				   <input type="search">
+				</div>
+			</div>
+
+
+			<div class="content_preview_holder">
+					<ul id="slider" class=""> </ul>
+				</div>
+
+				<div class="content_text_holder">
+						<div id="video_information" class="bubble"></div>
+						<div class="pure-g download">
+							<div class="flat_button pure-u-1-3">
+								<img id="play_btn" src="/images/Media-Play-32.png">Play
+							</div>
+							<div class="flat_button pure-u-1-3">
+								<img id="download_btn" src="/images/Download-32.png">Download
+							</div>
+						</div>
+				</div>
+
+		</div>
+		<div class="center">
+  			<a id='btn_next_section' >Next</a>
+		</div>
+		<!--
+		<div class="section_change">
+			<button class="section_button">b</button>
+		</div>-->
+	</body>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+	<link rel="stylesheet" href="css/remote_custom.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"> </script>
+	<!--script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script!-->
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="js/libs/hammer.js"></script>
+	<script src="js/libs/jquery-1.11.1.js"></script>
+	<script src="js/UI_controll/class.slider.js"></script>
+	<script src="js/UI_controll/class.section.js"></script>
+	<script src="js/class.remote.js"></script>
+	<script src="js/Remote_Sockets/class.socketinteraction.js"></script>
+	<!--script src="js/remote.js"></script!-->
+	<!--script src="js/remoteSection.js"></script!-->
+
+
+	<script id="torrentTpl" type="text/template">
+		<li id=torrent_{{number}} slide-id={{number}} class="thumbnail">
+			<label for="text" class="image_tile"> {{seeders}} </label>
+			<p>{{name}}</p>
+			<div class="hidden thumbnail_description">
+				<h2>
+					{{name}}
+				</h2>
+				<p>
+					link:{{link}}
+					Size:{{size}}
+				</p>
+			</div>
+		</li>
+	</script>
+	<script id="youtubeTpl" type="text/template">
+		<li id={{idVideo}} slide-id={{number}} class="thumbnail">
+			<img src={{thumbnail}} class="image_tile">
+			<p>{{title}}</p>
+			<div class="thumbnail_description hidden ">
+				<h2>
+					{{title}}
+				</h2>
+				<p class="video_description">
+					{{description}}
+				</p>
+			</div>
+		</li>
+	</script>
+
+</html>
+

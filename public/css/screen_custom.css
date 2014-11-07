@@ -1,0 +1,61 @@
+li.selected_title{
+	color:black;
+	font-size: 80px;
+}
+
+li.title{
+	display: inline;
+	margin: 0 100 0 0;
+}
+
+ul.section_titles{
+	margin: 0 auto;
+	display: inline;
+	color:grey;
+	list-style: none;
+	font-family: 'Roboto', sans-serif;
+	font-size: 50px;
+}
+#video_information{
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+}
+.selected_title{
+	border-top: solid 2px red;
+}
+.red{
+	color:red;
+}
+ul.video-tile{
+	white-space: nowrap;
+}
+li.thumbnail{
+	list-style: none;
+	display: inline-block;
+	margin:5px;
+	opacity: 0.5;
+}
+li.selected_video img.image_tile{
+	width : 400px;
+	position: relative;
+	top: 20px;
+}
+li.selected_video{
+	opacity: 1.0;
+	
+}
+
+.hidden{
+	display:none;
+}
+.right{
+	float: right;
+}
+.nav_title{
+	text-align: center;
+}
+.content_preview_holder{
+	margin-top: 60px;
+	overflow: hidden;
+}
+
