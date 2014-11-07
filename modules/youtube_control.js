@@ -30,7 +30,7 @@ exports.respond = function(youtube,socket_io){
     console.log("Trying to download...");
     var id = data.video_id,
         url = "http://www.youtube.com/watch?v="+id;
-        os.run('youtube-dl',['-o','./vid/%(id)s.%(ext)s','-f','/18/22',id],
+        os.run('youtube-dl',['-o','./vid/%(id)s.%(ext)s','-f','/18/22',url],
         function (me, buffer) {
             me.stdout = buffer.toString();
             //socket.emit("loading",{output: me.stdout});
