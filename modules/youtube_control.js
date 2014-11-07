@@ -48,17 +48,19 @@ exports.respond = function(youtube,socket_io){
     console.log("Trying to download...");
     var id = data.video_id,
         url = "http://www.youtube.com/watch?v="+id;
+    var long_url = "";
         os.run('youtube-dl',['-g',url],
         function (me, buffer) {
             me.stdout = buffer.toString();
             socket_io.emit('loading',{output: me.stdout});
             socket_io.broadcast.emit('loading',{output: me.stdout});
             console.log(me.stdout);
+            long_url = me.stdout;
          },
         function () {
             //child = spawn('omxplayer',['./vid/'+id+'.mp4']);
             //omx.start('./vid/'+id+'.mp4');
-            console.log("omxplayer started");
+            console.log("omxplayer started" + long_url);
         });
   });
 
