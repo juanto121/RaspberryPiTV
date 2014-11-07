@@ -107,36 +107,46 @@ var Remote = (function(){
 
 
 		if(response.room === 'torrent'){
-			torrent_entry = found_content[index];
-			var name = torrent_entry.name,
-				link = torrent_entry.link,
-				seeders = torrent_entry.seeders,
-				size = torrent_entry.size;
+			var found_content = response.res_obj;
+			var index;
+				
+			this.slider.slider_element.empty();
+			var content_length = found_content.length;
+			
+			for(index = 0; index < 10; ++index){
+				torrent_entry = found_content[index];
+				var name = torrent_entry.name,
+					link = torrent_entry.link,
+					seeders = torrent_entry.seeders,
+					size = torrent_entry.size;
 
-				var G=(255*seeders)/100,
-					R=(255*(100-seeders))/100,
-					B=20;
+					var G=(255*seeders)/100,
+						R=(255*(100-seeders))/100,
+						B=20;
 
-			torrent_info = {
-				name : name,
-				number:index,
-				seeders:seeders,
-				link : link,
-				size : size,
-			};
+				torrent_info = {
+					name : name,
+					number:index,
+					seeders:seeders,
+					link : link,
+					size : size,
+				};
 
-			var template = $('#torrentTpl').html(),
-				html = Mustache.to_html(template, torrent_info);
+				var template = $('#torrentTpl').html(),
+					html = Mustache.to_html(template, torrent_info);
 
-			$('#slider').append(html);
+				this.slider.slider_element.append(html);
+				var current_li = $('#torrent_'+index);
+				var colors = 'rgb('+Math.round(R)+','+Math.round(G)+','+B+')';
+				$(current_li).css('background-color',colors);
+				if( index == 0 ){
+					current_li.addClass("selected_video");
+				}
 
-			var current_li = $('#torrent_'+index);
-			current_li.on("click",this.play.bind(this));
-			var colors = 'rgb('+Math.round(R)+','+Math.round(G)+','+B+')';
-			$(current_li).css('background-color',colors);
-			if( index == 0 ){
-				current_li.addClass("selected_video");
 			}
+
+			this.slider.update();
+
 		}
 
 	}
