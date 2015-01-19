@@ -8,9 +8,7 @@ var express = require('express')
   , youtube_control = require('./modules/youtube_control');
 
 
-server.listen(process.env.TEST_PORT || 80,function(){
-  console.log("Listening @ ",server.address());
-});
+server.listen(process.env.TEST_PORT || 80);
 app.use(express.static(path.join(__dirname + '/public')));
 app.use(express.static(path.join(__dirname + '/views')));
 
